@@ -1,31 +1,32 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {MasterUsecaseService} from '../../core/domain/usecase/master/master-usecase.service';
 import {Pastor} from '../../core/domain/model/master/pastor/entity/pastor.model';
-import {Observable} from 'rxjs';
+import {MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-pastor-show',
   templateUrl: './pastor-show.component.html',
   styleUrls: ['./pastor-show.component.scss']
 })
-export class PastorShowComponent implements OnInit {
-  public pastores: Pastor[];
-  public displayedColumns: string[] = ['names', 'lastNames', 'documentNumber', 'documentType'];
+
+export class PastorShowComponent {
+  displayedColumns: string[] = ['names', 'lastNames', 'documentNumber', 'documentType'];
+  dataSource: MatTableDataSource<Pastor>;
 
   constructor(private masterUseCase: MasterUsecaseService) {
     this.getAllPastores();
   }
 
-  ngOnInit() {
-    console.log('pastores!');
-    console.log(this.pastores);
+  applyFilter(filterValue: string) {
+    console.log(filterValue);
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   private getAllPastores() {
     this.masterUseCase.getAllPastores().subscribe(
-      pastores => {
-        console.log(pastores);
-        this.pastores = pastores;
+      pastor => {
+        console.log(pastor);
+        this.dataSource = new MatTableDataSource(pastor);
       }
     );
   }

@@ -2,7 +2,15 @@
   <h2>Pastores Registrados</h2>
 </div>
 
-<table [dataSource]="pastores" class="mat-elevation-z8" mat-table>
+<a routerLink="/">
+  <button color="primary" mat-raised-button>Volver</button>
+</a>
+
+<mat-form-field>
+  <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Buscar...">
+</mat-form-field>
+
+<table [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
 
   <ng-container matColumnDef="names">
     <th *matHeaderCellDef mat-header-cell> Nombres</th>
@@ -19,13 +27,11 @@
     <td *matCellDef="let element" mat-cell> {{element.documentNumber}} </td>
   </ng-container>
 
-  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
-
   <ng-container matColumnDef="documentType">
-    <th *matHeaderCellDef mat-header-cell> Número de Documento</th>
-    <td *matCellDef="let element" mat-cell> {{element.documentType}} </td>
+    <th *matHeaderCellDef mat-header-cell> Tipo de Documento</th>
+    <td *matCellDef="let element" mat-cell> {{element.documentType.idType}} </td>
   </ng-container>
 
+  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
   <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
 </table>
-
