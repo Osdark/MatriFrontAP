@@ -1,34 +1,38 @@
 <div>
-  <h2>Pastores Registrados</h2>
+  <h2>{{ messages.show.title }}</h2>
 </div>
 
 <a routerLink="/">
-  <button color="primary" mat-raised-button>Volver</button>
+  <button color="primary" mat-raised-button>{{ messages.show.back }}</button>
 </a>
 
+<button mat-mini-fab color="warn" matTooltip="{{ messages.show.addPastor }}" (click)="openModal()">
+  <fa name="user-plus"></fa>
+</button>
+
 <mat-form-field>
-  <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Buscar...">
+  <input (keyup)="applyFilter($event.target.value)" matInput placeholder="{{ messages.show.search }}">
 </mat-form-field>
 
-<table [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
+<table [dataSource]="dataSource" class="mat-elevation-z8" mat-table matSort>
 
   <ng-container matColumnDef="names">
-    <th *matHeaderCellDef mat-header-cell> Nombres</th>
+    <th *matHeaderCellDef mat-header-cell mat-sort-header> {{ messages.names }}</th>
     <td *matCellDef="let element" mat-cell> {{element.names}} </td>
   </ng-container>
 
   <ng-container matColumnDef="lastNames">
-    <th *matHeaderCellDef mat-header-cell> Apellidos</th>
+    <th *matHeaderCellDef mat-header-cell mat-sort-header> {{ messages.lastNames }}</th>
     <td *matCellDef="let element" mat-cell> {{element.lastNames}} </td>
   </ng-container>
 
   <ng-container matColumnDef="documentNumber">
-    <th *matHeaderCellDef mat-header-cell> Número de Documento</th>
+    <th *matHeaderCellDef mat-header-cell mat-sort-header> {{ messages.documentNumber }}</th>
     <td *matCellDef="let element" mat-cell> {{element.documentNumber}} </td>
   </ng-container>
 
   <ng-container matColumnDef="documentType">
-    <th *matHeaderCellDef mat-header-cell> Tipo de Documento</th>
+    <th *matHeaderCellDef mat-header-cell> {{ messages.documentType }}</th>
     <td *matCellDef="let element" mat-cell> {{element.documentType.idType}} </td>
   </ng-container>
 

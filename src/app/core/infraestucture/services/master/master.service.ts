@@ -21,7 +21,7 @@ export class MasterService extends MasterGateway {
   }
 
   getAllDocumentTypes(): Observable<DocumentType[]> {
-    const URL = `${this.masterURL}/documentTypes`;
+    const URL = `${this.masterURL}/documentos_identidad`;
     return this.http.get<DocumentType[]>(URL).pipe();
   }
 
@@ -41,7 +41,7 @@ export class MasterService extends MasterGateway {
   }
 
   getDocumentTypeByIdType(idType: string): Observable<DocumentType> {
-    const URL = `${this.masterURL}/documentType/${idType}`;
+    const URL = `${this.masterURL}/documentos_identidad/${idType}`;
     return this.http.get<DocumentType>(URL).pipe();
   }
 

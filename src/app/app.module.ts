@@ -9,6 +9,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {IndexModule} from './shared/module/index.module';
 import {ServiceModule} from './shared/service/service.module';
 import {MatButtonModule} from '@angular/material';
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {MatButtonModule} from '@angular/material';
     IndexModule,
     ServiceModule,
     MatButtonModule,
+    AngularFontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

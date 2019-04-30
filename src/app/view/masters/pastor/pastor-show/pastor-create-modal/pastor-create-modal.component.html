@@ -1,3 +1,56 @@
-<p>
-  pastor-create-modal works!
-</p>
+<h1 mat-dialog-title>{{ messages.create.title }}</h1>
+<div mat-dialog-content>
+  <form>
+    <mat-form-field>
+      <input formControlName="names" id="names" matInput
+             placeholder="{{ messages.names }}" required>
+
+      <mat-error *ngIf="!form.controls['names'].hasError('required')">
+        {{ messages.create.errors.requiredField }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input formControlName="lastNames" id="lastNames" matInput
+             placeholder="{{ messages.lastNames }}" required>
+
+      <mat-error *ngIf="!form.controls['lastNames'].hasError('required')">
+        {{ messages.create.errors.requiredField }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input formControlName="documentNumber" id="documentNumber" matInput
+             placeholder="{{ messages.documentNumber }}" required>
+
+      <mat-error *ngIf="!form.controls['documentNumber'].hasError('required')">
+        {{ messages.create.errors.requiredField }}
+      </mat-error>
+      <mat-error *ngIf="form.controls['documentNumber'].hasError('pattern')">
+        {{ messages.create.errors.invalidDocNumber }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select formControlName="documentType" id="documentType"
+                  placeholder="{{ messages.documentType }}" required>
+
+        <mat-option *ngFor="let documentType of docTypes" [value]="documentType.idType">
+          {{ documentType.idType }}
+        </mat-option>
+      </mat-select>
+
+      <mat-error *ngIf="!form.controls['documentType'].hasError('required')">
+        {{ messages.create.errors.requiredField }}
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button (click)="addPastor()" color="primary" mat-fab matTooltip="{{ messages.create.create }}">
+    <fa name="user-plus"></fa>
+  </button>
+  <button (click)="onNoClick()" color="warn" mat-fab matTooltip="{{ messages.create.cancel }}">
+    <fa name="user-times"></fa>
+  </button>
+</div>

@@ -1,11 +1,18 @@
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MatrimonioShowComponent, PastorShowComponent} from '../pages';
-import {MatFormFieldModule, MatIconModule, MatInputModule, MatSortModule, MatTableModule} from '@angular/material';
+import {MatrimonioShowComponent, PastorCreateModalComponent, PastorShowComponent} from '../pages';
+import {
+  MatDialogModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule, MatSelectModule,
+  MatSortModule,
+  MatTableModule,
+  MatTooltipModule
+} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 import {AppRoutingModule} from '../../app-routing.module';
-import {PastorCreateModalComponent} from '../../view/masters/pastor/pastor-show/pastor-create-modal/pastor-create-modal.component';
-
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
 
 @NgModule({
   // All components
@@ -23,8 +30,15 @@ import {PastorCreateModalComponent} from '../../view/masters/pastor/pastor-show/
     MatInputModule,
     MatSortModule,
     AppRoutingModule,
+    MatDialogModule,
+    AngularFontAwesomeModule,
+    MatTooltipModule,
+    MatSelectModule,
   ],
   exports: [],
+  entryComponents: [
+    PastorCreateModalComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class IndexModule {
