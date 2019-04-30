@@ -9,6 +9,8 @@ export abstract class MasterGateway {
 
   abstract getPastorByDocumentNumber(documentNumber: string): Observable<Pastor>;
 
+  abstract savePastor(pastor: Pastor): Observable<Pastor>;
+
   abstract getAllIglesias(): Observable<Iglesia[]>;
 
   abstract getIglesiaByName(name: string): Observable<Iglesia>;

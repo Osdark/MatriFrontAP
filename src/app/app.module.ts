@@ -9,12 +9,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {IndexModule} from './shared/module/index.module';
 import {ServiceModule} from './shared/service/service.module';
 import {MatButtonModule} from '@angular/material';
-import { MatrimonioShowComponent } from './view/matrimonio-show/matrimonio-show.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MatrimonioShowComponent,
   ],
   imports: [
     BrowserModule,

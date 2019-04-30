@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {MasterUsecaseService} from '../../core/domain/usecase/master/master-usecase.service';
-import {Pastor} from '../../core/domain/model/master/pastor/entity/pastor.model';
+import {MasterUsecaseService} from '../../../../core/domain/usecase/master/master-usecase.service';
+import {Pastor} from '../../../../core/domain/model/master/pastor/entity/pastor.model';
 import {MatTableDataSource} from '@angular/material';
 
 @Component({

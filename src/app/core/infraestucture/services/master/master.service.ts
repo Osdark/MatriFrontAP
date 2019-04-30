@@ -13,6 +13,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class MasterService extends MasterGateway {
 
+
   public masterURL = `${environment.host}:${environment.port}/maestros`;
 
   constructor(private http: HttpClient) {
@@ -62,5 +63,10 @@ export class MasterService extends MasterGateway {
   saveNotaria(notaria: Notaria): Observable<Notaria> {
     const URL = `${this.masterURL}/notaria/nueva`;
     return this.http.post<Notaria>(URL, notaria).pipe();
+  }
+
+  savePastor(pastor: Pastor): Observable<Pastor> {
+    const URL = `${this.masterURL}/pastor/nuevo`;
+    return this.http.post<Pastor>(URL, pastor).pipe();
   }
 }

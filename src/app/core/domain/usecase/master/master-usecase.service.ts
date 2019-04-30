@@ -47,4 +47,8 @@ export class MasterUsecaseService {
   saveNotaria(notaria: Notaria): Observable<Notaria> {
     return this.masterService.saveNotaria(notaria);
   }
+
+  savePastor(pastor: Pastor): Observable<Pastor> {
+    return this.masterService.savePastor(pastor);
+  }
 }
