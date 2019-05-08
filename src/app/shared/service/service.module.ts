@@ -4,6 +4,8 @@ import {ContrayenteGateway} from '../../core/domain/model/contrayente/gateway/co
 import {ContrayenteService} from '../../core/infraestucture/services/contrayente/contrayente.service';
 import {MasterGateway} from '../../core/domain/model/master/gateway/master-gateway.abstract';
 import {MasterService} from '../../core/infraestucture/services/master/master.service';
+import {NbMenuService, NbSidebarService} from '@nebular/theme';
+import {NbMenuInternalService} from '@nebular/theme/components/menu/menu.service';
 
 @NgModule({
   imports: [CommonModule],
@@ -15,7 +17,10 @@ import {MasterService} from '../../core/infraestucture/services/master/master.se
     {
       provide: MasterGateway,
       useClass: MasterService
-    }
+    },
+    NbSidebarService,
+    NbMenuInternalService,
+    NbMenuService,
     // Matrimonio Service
   ]
 })

@@ -1,5 +1,30 @@
-<a routerLink="/pastores">
-  <button color="primary" mat-raised-button>Listar Pastores</button>
-</a>
+<nb-layout>
 
-<router-outlet></router-outlet>
+  <nb-layout-header fixed>
+    SGM - Sistema de Gestión de Matrimonios
+  </nb-layout-header>
+
+  <nb-sidebar>sidebar
+    <nb-menu [items]="items">
+    </nb-menu>
+  </nb-sidebar>
+
+  <nb-layout-column>
+    <a routerLink="/contrayente">
+      <button color="primary" mat-raised-button>Agregar Contrayente</button>
+    </a>
+    <a routerLink="/iglesias">
+      <button color="primary" mat-raised-button>Listar Iglesias</button>
+    </a>
+    <a routerLink="/pastores">
+      <button color="primary" mat-raised-button>Listar Pastores</button>
+    </a>
+    <toaster-container></toaster-container>
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+
+  <nb-layout-footer fixed>
+    <!-- Insert footer here -->
+  </nb-layout-footer>
+
+</nb-layout>

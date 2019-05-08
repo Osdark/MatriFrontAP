@@ -1,11 +1,19 @@
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MatrimonioShowComponent, PastorCreateModalComponent, PastorShowComponent} from '../pages';
+import {
+  ContrayenteCreateComponent,
+  IglesiaCreateModalComponent,
+  IglesiaShowComponent,
+  MatrimonioShowComponent,
+  PastorCreateModalComponent,
+  PastorShowComponent
+} from '../pages';
 import {
   MatDialogModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatSelectModule,
+  MatInputModule,
+  MatSelectModule,
   MatSortModule,
   MatTableModule,
   MatTooltipModule
@@ -13,6 +21,9 @@ import {
 import {MatButtonModule} from '@angular/material/button';
 import {AppRoutingModule} from '../../app-routing.module';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ToasterModule} from 'angular2-toaster';
+import {NbLayoutModule, NbSidebarModule, NbThemeModule} from '@nebular/theme';
 
 @NgModule({
   // All components
@@ -20,6 +31,9 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
     PastorShowComponent,
     PastorCreateModalComponent,
     MatrimonioShowComponent,
+    IglesiaShowComponent,
+    IglesiaCreateModalComponent,
+    ContrayenteCreateComponent,
   ],
   imports: [
     CommonModule,
@@ -34,10 +48,14 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
     AngularFontAwesomeModule,
     MatTooltipModule,
     MatSelectModule,
+    ReactiveFormsModule,
+    FormsModule,
+    ToasterModule.forRoot(),
   ],
   exports: [],
   entryComponents: [
     PastorCreateModalComponent,
+    IglesiaCreateModalComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

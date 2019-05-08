@@ -4,9 +4,8 @@ import {environment} from '../../../../../environments/environment';
 import {Observable} from 'rxjs';
 import {DocumentType} from '../../../domain/model/master/documentType/entity/documentType.model';
 import {Iglesia} from '../../../domain/model/master/iglesia/entity/iglesia.model';
-import {Notaria} from '../../../domain/model/master/notaria/entity/notaria.model';
 import {Pastor} from '../../../domain/model/master/pastor/entity/pastor.model';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -30,18 +29,13 @@ export class MasterService extends MasterGateway {
     return this.http.get<Iglesia[]>(URL).pipe();
   }
 
-  getAllNotarias(): Observable<Notaria[]> {
-    const URL = `${this.masterURL}/notarias`;
-    return this.http.get<Notaria[]>(URL).pipe();
-  }
-
   getAllPastores(): Observable<Pastor[]> {
     const URL = `${this.masterURL}/pastores`;
     return this.http.get<Pastor[]>(URL).pipe();
   }
 
   getDocumentTypeByIdType(idType: string): Observable<DocumentType> {
-    const URL = `${this.masterURL}/documentos_identidad/${idType}`;
+    const URL = `${this.masterURL}/documento/${idType}`;
     return this.http.get<DocumentType>(URL).pipe();
   }
 
@@ -50,23 +44,18 @@ export class MasterService extends MasterGateway {
     return this.http.get<Iglesia>(URL).pipe();
   }
 
-  getNotariaByName(name: string): Observable<Notaria> {
-    const URL = `${this.masterURL}/notaria/${name}`;
-    return this.http.get<Notaria>(URL).pipe();
-  }
-
   getPastorByDocumentNumber(documentNumber: string): Observable<Pastor> {
     const URL = `${this.masterURL}/pastor/${documentNumber}`;
     return this.http.get<Pastor>(URL).pipe();
   }
 
-  saveNotaria(notaria: Notaria): Observable<Notaria> {
-    const URL = `${this.masterURL}/notaria/nueva`;
-    return this.http.post<Notaria>(URL, notaria).pipe();
-  }
-
   savePastor(pastor: Pastor): Observable<Pastor> {
     const URL = `${this.masterURL}/pastor/nuevo`;
     return this.http.post<Pastor>(URL, pastor).pipe();
+  }
+
+  saveChurch(church: Iglesia) {
+    const URL = `${this.masterURL}/iglesia/nueva`;
+    return this.http.post<Iglesia>(URL, church).pipe();
   }
 }

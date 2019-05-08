@@ -1,0 +1,34 @@
+<div>
+  <h2>{{ messages.show.title }}</h2>
+</div>
+
+<a routerLink="/">
+  <button color="primary" mat-raised-button matTooltip="{{ messages.show.back }}">
+    <fa name="arrow-left"></fa>
+  </button>
+</a>
+
+<button mat-mini-fab color="warn" matTooltip="{{ messages.show.addChurch }}" (click)="openModal()">
+  <fa name="plus"></fa>
+</button>
+
+<mat-form-field>
+  <input (keyup)="applyFilter($event.target.value)" matInput placeholder="{{ messages.show.search }}">
+</mat-form-field>
+
+<table [dataSource]="dataSource" class="mat-elevation-z8" mat-table matSort>
+
+  <ng-container matColumnDef="name">
+    <th *matHeaderCellDef mat-header-cell mat-sort-header> {{ messages.name }}</th>
+    <td *matCellDef="let element" mat-cell> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="address">
+    <th *matHeaderCellDef mat-header-cell mat-sort-header> {{ messages.address }}</th>
+    <td *matCellDef="let element" mat-cell> {{element.address}} </td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+  <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+</table>
+<toaster-container></toaster-container>

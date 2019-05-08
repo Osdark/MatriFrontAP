@@ -22,7 +22,7 @@ export class ContrayenteService extends ContrayenteGateway {
   }
 
   getContrayenteByDocumentNumber(documentNumber: string): Observable<Contrayente> {
-    const URL = `${this.contrayenteURL}/contrayentes/${documentNumber}`;
+    const URL = `${this.contrayenteURL}/contrayente/${documentNumber}`;
     return this.http.get<Contrayente>(URL).pipe();
   }
 

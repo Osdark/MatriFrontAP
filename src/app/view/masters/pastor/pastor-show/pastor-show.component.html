@@ -3,10 +3,12 @@
 </div>
 
 <a routerLink="/">
-  <button color="primary" mat-raised-button>{{ messages.show.back }}</button>
+  <button color="primary" mat-raised-button matTooltip="{{ messages.show.back }}">
+    <fa name="arrow-left"></fa>
+  </button>
 </a>
 
-<button mat-mini-fab color="warn" matTooltip="{{ messages.show.addPastor }}" (click)="openModal()">
+<button (click)="openModal()" color="warn" mat-mini-fab matTooltip="{{ messages.show.addPastor }}">
   <fa name="user-plus"></fa>
 </button>
 
@@ -39,3 +41,4 @@
   <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
   <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
 </table>
+<toaster-container></toaster-container>

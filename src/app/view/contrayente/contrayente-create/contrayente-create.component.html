@@ -1,0 +1,80 @@
+<div class="form">
+  <h1>{{ messages.create.title }}</h1>
+  <div>
+    <form [formGroup]="form">
+      <mat-form-field>
+        <input formControlName="names" id="names" matInput
+               placeholder="{{ messages.names }}" required>
+
+        <mat-error *ngIf="form.controls['names'].hasError('required')">
+          {{ messages.create.errors.requiredField }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input formControlName="lastNames" id="lastNames" matInput
+               placeholder="{{ messages.lastNames }}" required>
+
+        <mat-error *ngIf="form.controls['lastNames'].hasError('required')">
+          {{ messages.create.errors.requiredField }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select formControlName="documentType" id="documentType" placeholder="{{ messages.documentType }}" required>
+
+          <mat-option *ngFor="let documentType of docTypes" [value]=documentType>
+            {{ documentType.idType }} - {{ documentType.name }}
+          </mat-option>
+        </mat-select>
+
+        <mat-error *ngIf="form.controls['documentType'].hasError('required')">
+          {{ messages.create.errors.requiredField }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input formControlName="documentNumber" id="documentNumber" matInput
+               placeholder="{{ messages.documentNumber }}" required>
+
+        <mat-error *ngIf="form.controls['documentNumber'].hasError('required')">
+          {{ messages.create.errors.requiredField }}
+        </mat-error>
+        <mat-error *ngIf="form.controls['documentNumber'].hasError('pattern')">
+          {{ messages.create.errors.invalidDocNumber }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input formControlName="civilRegNumber" id="civilRegNumber" matInput
+               placeholder="{{ messages.civilRegNumber }}" required>
+
+        <mat-error *ngIf="form.controls['civilRegNumber'].hasError('required')">
+          {{ messages.create.errors.requiredField }}
+        </mat-error>
+        <mat-error *ngIf="form.controls['documentNumber'].hasError('pattern')">
+          {{ messages.create.errors.invalidDocNumber }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input formControlName="notaria" id="notaria" matInput
+               placeholder="{{ messages.notaria }}" required>
+
+        <mat-error *ngIf="form.controls['notaria'].hasError('required')">
+          {{ messages.create.errors.requiredField }}
+        </mat-error>
+      </mat-form-field>
+
+    </form>
+  </div>
+  <div>
+    <button (click)="addContrayente()" [disabled]="!this.form.valid" color="primary" mat-fab
+            matTooltip="{{ messages.create.create }}">
+      <fa name="user-plus"></fa>
+    </button>
+    <button (click)="onNoClick()" color="warn" mat-fab matTooltip="{{ messages.create.cancel }}">
+      <fa name="user-times"></fa>
+    </button>
+  </div>
+</div>

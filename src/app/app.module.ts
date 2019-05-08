@@ -10,6 +10,9 @@ import {IndexModule} from './shared/module/index.module';
 import {ServiceModule} from './shared/service/service.module';
 import {MatButtonModule} from '@angular/material';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import {ToasterModule} from 'angular2-toaster';
+import {NbLayoutModule, NbMenuModule, NbSidebarModule, NbThemeModule} from '@nebular/theme';
+
 
 @NgModule({
   declarations: [
@@ -26,6 +29,11 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
     ServiceModule,
     MatButtonModule,
     AngularFontAwesomeModule,
+    ToasterModule,
+    NbThemeModule.forRoot({name: 'corporate'}),
+    NbLayoutModule,
+    NbSidebarModule,
+    NbMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {NbMenuItem} from "@nebular/theme";
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,16 @@ import {Router} from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'MatriFront';
+  items: NbMenuItem[] = [
+    {
+      title: 'Home',
+      link: '/'
+    },
+    {
+      title: 'Pastores',
+      link: '/pastores'
+    }
+  ];
 
   constructor(private router: Router) {
   }

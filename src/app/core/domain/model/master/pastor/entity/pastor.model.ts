@@ -5,7 +5,8 @@ export class Pastor {
     public names: string,
     public lastNames: string,
     public documentNumber: string,
-    public documentType: DocumentType
+    public documentType: DocumentType,
+    public id?: string,
   ) {
   }
 }

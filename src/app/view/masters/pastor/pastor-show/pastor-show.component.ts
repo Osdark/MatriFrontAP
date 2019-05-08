@@ -3,7 +3,8 @@ import {MasterUsecaseService} from '../../../../core/domain/usecase/master/maste
 import {Pastor} from '../../../../core/domain/model/master/pastor/entity/pastor.model';
 import {MatDialog, MatSort, MatTableDataSource} from '@angular/material';
 import {PastorCreateModalComponent} from './pastor-create-modal/pastor-create-modal.component';
-import {mensajes} from "../../../../shared/utils/mensajes";
+import {mensajes} from '../../../../shared/utils/mensajes';
+import {ToasterService} from 'angular2-toaster';
 
 @Component({
   selector: 'app-pastor-show',
@@ -17,8 +18,12 @@ export class PastorShowComponent {
   messages: any;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private masterUseCase: MasterUsecaseService, public dialog: MatDialog) {
-    this.getAllPastores();
+  constructor(
+    private masterUseCase: MasterUsecaseService,
+    public dialog: MatDialog,
+    private toastr: ToasterService
+  ) {
+    this.getAllPastors();
     this.messages = mensajes.pastor;
   }
 
@@ -27,20 +32,24 @@ export class PastorShowComponent {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  private getAllPastores() {
-    this.masterUseCase.getAllPastores().subscribe(
-      pastor => {
-        console.log(pastor);
-        this.dataSource = new MatTableDataSource(pastor);
-        this.dataSource.sort = this.sort;
-      }
-    );
-  }
-
   openModal(): void {
     const dialogRef = this.dialog.open(PastorCreateModalComponent);
     dialogRef.afterClosed().subscribe(result => {
       console.log('Closed');
     });
+  }
+
+  private getAllPastors() {
+    this.masterUseCase.getAllPastores().subscribe(
+      pastors => {
+        console.log(pastors);
+        this.dataSource = new MatTableDataSource(pastors);
+        this.dataSource.sort = this.sort;
+      },
+      err => {
+        this.toastr.pop('error', 'Error', this.messages.show.noResults);
+        console.log(err);
+      }
+    );
   }
 }
