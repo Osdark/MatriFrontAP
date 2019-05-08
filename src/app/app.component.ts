@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {NbMenuItem} from "@nebular/theme";
+import {NbMenuItem, NbSidebarService} from "@nebular/theme";
 
 @Component({
   selector: 'app-root',
@@ -48,10 +48,18 @@ export class AppComponent implements OnInit {
     },
   ];
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private sidebarService: NbSidebarService,
+  ) {
   }
 
   ngOnInit(): void {
     this.router.navigate(['']);
+  }
+
+  toggle() {
+    this.sidebarService.toggle(true);
+    return false;
   }
 }

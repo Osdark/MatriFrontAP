@@ -1,10 +1,17 @@
 <nb-layout>
 
-  <nb-layout-header fixed>
-    SGM - Sistema de Gestión de Matrimonios
+  <nb-layout-header subheader>
+    <div class="logo-container">
+      <a (click)="toggle()" href="#" class="navigation">
+        <fa name="bars"></fa>
+      </a>
+      <div class="logo">SGM -
+        <span> Sistema de Gestión de Matrimonios </span>
+      </div>
+    </div>
   </nb-layout-header>
 
-  <nb-sidebar _ngcontent-c1="" class="menu-sidebar start expanded" responsive tag="menu-sidebar">
+  <nb-sidebar>
     <nb-menu [items]="items" autoCollapse="true">
     </nb-menu>
   </nb-sidebar>

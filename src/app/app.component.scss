@@ -1,0 +1,13 @@
+.navigation {
+  display: block;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  width: calc(16.25rem - 1.25rem);
+}
+
+.logo {
+  border-left: 1.5rem solid #111218;
+}

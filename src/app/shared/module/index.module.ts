@@ -23,7 +23,6 @@ import {AppRoutingModule} from '../../app-routing.module';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ToasterModule} from 'angular2-toaster';
-import {NbLayoutModule, NbSidebarModule, NbThemeModule} from '@nebular/theme';
 
 @NgModule({
   // All components
