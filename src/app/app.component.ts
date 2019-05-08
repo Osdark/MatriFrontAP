@@ -11,13 +11,41 @@ export class AppComponent implements OnInit {
   title = 'MatriFront';
   items: NbMenuItem[] = [
     {
-      title: 'Home',
-      link: '/'
+      title: 'Inicio',
+      home: true,
+      link: '/',
+      icon: 'fa fa-home',
     },
     {
-      title: 'Pastores',
-      link: '/pastores'
-    }
+      title: 'Matrimonios',
+      icon: 'fa fa-book',
+      children: [
+        {
+          title: 'Ver',
+          link: '/matrimonios'
+        },
+        {
+          title: 'Registrar',
+          link: '/matrimonio/nuevo'
+        }
+      ]
+    },
+    {
+      title: 'Maestros',
+      icon: 'fa fa-user',
+      children: [
+        {
+          title: 'Pastores',
+          link: '/pastores',
+          icon: 'fa fa-black-tie'
+        },
+        {
+          title: 'Iglesias',
+          link: '/iglesias',
+          icon: 'fa fa-institution'
+        },
+      ]
+    },
   ];
 
   constructor(private router: Router) {

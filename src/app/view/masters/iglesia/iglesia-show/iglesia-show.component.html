@@ -2,16 +2,6 @@
   <h2>{{ messages.show.title }}</h2>
 </div>
 
-<a routerLink="/">
-  <button color="primary" mat-raised-button matTooltip="{{ messages.show.back }}">
-    <fa name="arrow-left"></fa>
-  </button>
-</a>
-
-<button mat-mini-fab color="warn" matTooltip="{{ messages.show.addChurch }}" (click)="openModal()">
-  <fa name="plus"></fa>
-</button>
-
 <mat-form-field>
   <input (keyup)="applyFilter($event.target.value)" matInput placeholder="{{ messages.show.search }}">
 </mat-form-field>
@@ -32,3 +22,7 @@
   <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
 </table>
 <toaster-container></toaster-container>
+
+<button (click)="openModal()" color="primary" mat-mini-fab matTooltip="{{ messages.show.addChurch }}" class="add-button">
+  <fa name="plus"></fa>
+</button>

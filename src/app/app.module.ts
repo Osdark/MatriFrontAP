@@ -12,6 +12,7 @@ import {MatButtonModule} from '@angular/material';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {ToasterModule} from 'angular2-toaster';
 import {NbLayoutModule, NbMenuModule, NbSidebarModule, NbThemeModule} from '@nebular/theme';
+import { MatrimonioCreateComponent } from './view/matrimonio/matrimonio-create/matrimonio-create.component';
 
 
 @NgModule({

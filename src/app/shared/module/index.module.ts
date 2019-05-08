@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {
   ContrayenteCreateComponent,
   IglesiaCreateModalComponent,
-  IglesiaShowComponent,
+  IglesiaShowComponent, MatrimonioCreateComponent,
   MatrimonioShowComponent,
   PastorCreateModalComponent,
   PastorShowComponent
@@ -12,7 +12,7 @@ import {
   MatDialogModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule,
+  MatInputModule, MatPaginatorModule,
   MatSelectModule,
   MatSortModule,
   MatTableModule,
@@ -34,6 +34,7 @@ import {NbLayoutModule, NbSidebarModule, NbThemeModule} from '@nebular/theme';
     IglesiaShowComponent,
     IglesiaCreateModalComponent,
     ContrayenteCreateComponent,
+    MatrimonioCreateComponent,
   ],
   imports: [
     CommonModule,
@@ -51,6 +52,7 @@ import {NbLayoutModule, NbSidebarModule, NbThemeModule} from '@nebular/theme';
     ReactiveFormsModule,
     FormsModule,
     ToasterModule.forRoot(),
+    MatPaginatorModule,
   ],
   exports: [],
   entryComponents: [

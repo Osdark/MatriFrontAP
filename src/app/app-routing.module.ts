@@ -1,6 +1,12 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {ContrayenteCreateComponent, IglesiaShowComponent, PastorShowComponent} from './shared/pages';
+import {
+  ContrayenteCreateComponent,
+  IglesiaShowComponent,
+  MatrimonioShowComponent,
+  PastorShowComponent,
+  MatrimonioCreateComponent,
+} from './shared/pages';
 import {AppComponent} from './app.component';
 
 const routes: Routes = [
@@ -15,6 +21,14 @@ const routes: Routes = [
   {
     path: 'contrayente',
     component: ContrayenteCreateComponent
+  },
+  {
+    path: 'matrimonios',
+    component: MatrimonioShowComponent
+  },
+  {
+    path: 'matrimonio/nuevo',
+    component: MatrimonioCreateComponent
   },
   {
     path: 'home',

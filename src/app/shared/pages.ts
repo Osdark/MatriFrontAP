@@ -8,3 +8,4 @@ export {
   IglesiaCreateModalComponent
 }from '../view/masters/iglesia/iglesia-show/iglesia-create-modal/iglesia-create-modal.component';
 export {ContrayenteCreateComponent} from '../view/contrayente/contrayente-create/contrayente-create.component';
+export {MatrimonioCreateComponent} from '../view/matrimonio/matrimonio-create/matrimonio-create.component';

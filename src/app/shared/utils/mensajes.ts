@@ -66,5 +66,21 @@ export const mensajes = {
       successful: 'Contrayente exitosamente agregado',
       unsuccessful: 'El contrayente no se pudo agregar debido a un error'
     }
-  }
+  },
+  matrimonio: {
+    show: {
+      title: 'Lista de Matrimonios',
+      noResults: 'No hay Matrimonios Registrados',
+      contrayente: 'Contrayente',
+      church: 'Iglesia',
+      pastor: 'Pastor',
+      date: 'Fecha',
+      regNumber: 'Número de registro',
+      notaria: 'Notaría/Registraduría',
+      search: 'Buscar...',
+    },
+    create: {
+      title: 'Registrar Matrimonio',
+    },
+  },
 };

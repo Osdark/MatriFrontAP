@@ -1,3 +1,51 @@
-<p>
-  matrimonio-show works!
-</p>
+<div>
+  <h2>{{ messages.title }}</h2>
+</div>
+
+<mat-form-field>
+  <input (keyup)="applyFilter($event.target.value)" matInput placeholder="{{ messages.search }}">
+</mat-form-field>
+
+<table [dataSource]="dataSource" class="mat-elevation-z8" mat-table matSort>
+
+  <ng-container matColumnDef="contrayente1">
+    <th *matHeaderCellDef mat-header-cell mat-sort-header> {{messages.contrayente}} 1</th>
+    <td *matCellDef="let element" mat-cell> {{element.contrayentes[0].names}} {{element.contrayentes[0].lastNames}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="contrayente2">
+    <th *matHeaderCellDef mat-header-cell mat-sort-header> {{messages.contrayente}} 2</th>
+    <td *matCellDef="let element" mat-cell> {{element.contrayentes[1].names}} {{element.contrayentes[1].lastNames}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="church">
+    <th *matHeaderCellDef mat-header-cell mat-sort-header> {{ messages.church }}</th>
+    <td *matCellDef="let element" mat-cell> {{element.iglesia.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="pastor">
+    <th *matHeaderCellDef mat-header-cell mat-sort-header> {{ messages.pastor }}</th>
+    <td *matCellDef="let element" mat-cell> {{element.pastor.names}} {{element.pastor.lastNames}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="date">
+    <th *matHeaderCellDef mat-header-cell mat-sort-header> {{ messages.date }}</th>
+    <td *matCellDef="let element" mat-cell> {{element.fecha}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="marriageRegistrationNumber">
+    <th *matHeaderCellDef mat-header-cell mat-sort-header> {{ messages.regNumber }}</th>
+    <td *matCellDef="let element" mat-cell> {{element.marriageRegistrationNumber}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="notaria">
+    <th *matHeaderCellDef mat-header-cell> {{ messages.notaria }}</th>
+    <td *matCellDef="let element" mat-cell> {{element.notaria}} </td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+  <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+<toaster-container></toaster-container>

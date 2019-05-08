@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {MasterUsecaseService} from '../../../../core/domain/usecase/master/master-usecase.service';
 import {Pastor} from '../../../../core/domain/model/master/pastor/entity/pastor.model';
-import {MatDialog, MatSort, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {PastorCreateModalComponent} from './pastor-create-modal/pastor-create-modal.component';
 import {mensajes} from '../../../../shared/utils/mensajes';
 import {ToasterService} from 'angular2-toaster';
@@ -17,6 +17,7 @@ export class PastorShowComponent {
   dataSource: MatTableDataSource<Pastor>;
   messages: any;
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
     private masterUseCase: MasterUsecaseService,
@@ -42,9 +43,9 @@ export class PastorShowComponent {
   private getAllPastors() {
     this.masterUseCase.getAllPastores().subscribe(
       pastors => {
-        console.log(pastors);
         this.dataSource = new MatTableDataSource(pastors);
         this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
       },
       err => {
         this.toastr.pop('error', 'Error', this.messages.show.noResults);

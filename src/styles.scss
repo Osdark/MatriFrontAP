@@ -1,12 +1,11 @@
 @import 'themes';
-
 @import '~@nebular/theme/styles/globals';
 
 @include nb-install() {
   @include nb-theme-global();
-};
+}
+
 @import '~@nebular/theme/styles/prebuilt/corporate.css';
 
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import '../node_modules/angular2-toaster/src/toaster.scss';
-
