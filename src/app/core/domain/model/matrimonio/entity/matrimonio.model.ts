@@ -4,14 +4,14 @@ import {Pastor} from '../../master/pastor/entity/pastor.model';
 
 export class Matrimonio {
   constructor(
-    public id: string,
     public contrayentes: Contrayente[],
     public iglesia: Iglesia,
     public pastor: Pastor,
     public date: Date,
     public marriageRegistrationNumber: string,
     public notaria: string,
-    public actaNumber: string
+    public actaNumber: string,
+    public id?: string,
   ) {
   }
 }

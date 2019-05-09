@@ -48,7 +48,7 @@ export class ContrayenteCreateComponent implements OnInit {
         contrayente => console.log(contrayente)
       ); /* Save Contrayente To DB */
       this.showMessage('success', this.messages.create.title, this.messages.create.successful);
-      location.reload();
+      //location.reload();
     } else {
       console.log('Formulario inválido');
       this.showMessage('error', this.messages.create.title, this.messages.create.unsuccessful);

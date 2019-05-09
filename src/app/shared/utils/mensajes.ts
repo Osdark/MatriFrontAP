@@ -81,6 +81,21 @@ export const mensajes = {
     },
     create: {
       title: 'Registrar Matrimonio',
+      contrayente: 'Registrar Contrayente',
+      cont1: 'Primer Contrayente',
+      cont2: 'Segundo Contrayente',
+      marriageData: 'Datos Matrimonio',
+      church: 'Iglesia',
+      pastor: 'Pastor',
+      date: 'Fecha',
+      regNumber: 'Número de registro',
+      notaria: 'Notaría/Registraduría',
+      nextStep: 'Guardar y Continuar',
+      prevStep: 'Atrás',
+      save: 'Registrar',
+      errors: {
+        requiredField: 'Este campo es obligatorio',
+      }
     },
   },
 };

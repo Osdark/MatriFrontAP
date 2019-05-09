@@ -1,5 +1,4 @@
 <div class="form">
-  <h1>{{ messages.create.title }}</h1>
   <div>
     <form [formGroup]="form">
       <mat-form-field>
@@ -67,14 +66,5 @@
       </mat-form-field>
 
     </form>
-  </div>
-  <div>
-    <button (click)="addContrayente()" [disabled]="!this.form.valid" color="primary" mat-fab
-            matTooltip="{{ messages.create.create }}">
-      <fa name="user-plus"></fa>
-    </button>
-    <button (click)="onNoClick()" color="warn" mat-fab matTooltip="{{ messages.create.cancel }}">
-      <fa name="user-times"></fa>
-    </button>
   </div>
 </div>

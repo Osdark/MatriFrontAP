@@ -23,6 +23,7 @@ import {AppRoutingModule} from '../../app-routing.module';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ToasterModule} from 'angular2-toaster';
+import {NbButtonModule, NbStepperModule} from "@nebular/theme";
 
 @NgModule({
   // All components
@@ -52,6 +53,8 @@ import {ToasterModule} from 'angular2-toaster';
     FormsModule,
     ToasterModule.forRoot(),
     MatPaginatorModule,
+    NbStepperModule,
+    NbButtonModule,
   ],
   exports: [],
   entryComponents: [

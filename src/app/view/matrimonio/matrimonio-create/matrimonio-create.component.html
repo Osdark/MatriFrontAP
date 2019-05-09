@@ -1,3 +1,40 @@
-<p>
-  matrimonio-create works!
-</p>
+<h1>
+  {{messages.title}}
+</h1>
+<nb-stepper linear>
+  <nb-step [label]="messages.cont1">
+    <h3>{{messages.contrayente}}</h3>
+    <form [formGroup]="contrayenteForm">
+      <app-contrayente-create></app-contrayente-create>
+    </form>
+    <button disabled nbButton nbStepperPrevious>{{messages.prevStep}}</button>
+    <button nbButton nbStepperNext>{{messages.nextStep}}</button>
+  </nb-step>
+  <nb-step [label]="messages.cont2">
+    <h3>{{messages.contrayente}}</h3>
+    <form [formGroup]="contrayenteForm">
+      <app-contrayente-create></app-contrayente-create>
+    </form>
+    <button nbButton nbStepperPrevious>{{messages.prevStep}}</button>
+    <button nbButton nbStepperNext>{{messages.nextStep}}</button>
+  </nb-step>
+  <nb-step [label]="messages.marriageData">
+    <h3>{{messages.marriageData}}</h3>
+    <form [formGroup]="marriageForm">
+      <mat-form-field>
+        <mat-select formControlName="church" id="church" placeholder="{{ messages.church }}" required>
+
+          <mat-option *ngFor="let church of churches" [value]=church>
+            {{ church.name }}
+          </mat-option>
+        </mat-select>
+
+        <mat-error *ngIf="marriageForm.controls['church'].hasError('required')">
+          {{ messages.errors.requiredField }}
+        </mat-error>
+      </mat-form-field>
+    </form>
+    <button nbButton nbStepperPrevious>{{messages.prevStep}}</button>
+    <button nbButton status="success">{{messages.save}}</button>
+  </nb-step>
+</nb-stepper>
