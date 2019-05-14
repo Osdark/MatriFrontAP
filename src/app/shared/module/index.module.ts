@@ -1,18 +1,21 @@
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {
+  CongregacionShowComponent,
   ContrayenteCreateComponent,
-  IglesiaCreateModalComponent,
-  IglesiaShowComponent, MatrimonioCreateComponent,
+  MatrimonioCreateComponent,
   MatrimonioShowComponent,
   PastorCreateModalComponent,
   PastorShowComponent
 } from '../pages';
 import {
-  MatDialogModule,
-  MatFormFieldModule,
+  MatCardModule,
+  MatDatepickerModule,
+  MatDialogModule, MatDividerModule,
+  MatFormFieldModule, MatGridListModule,
   MatIconModule,
-  MatInputModule, MatPaginatorModule,
+  MatInputModule, MatNativeDateModule,
+  MatPaginatorModule,
   MatSelectModule,
   MatSortModule,
   MatTableModule,
@@ -23,7 +26,9 @@ import {AppRoutingModule} from '../../app-routing.module';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ToasterModule} from 'angular2-toaster';
-import {NbButtonModule, NbStepperModule} from "@nebular/theme";
+import {NbButtonModule, NbCardModule, NbStepperModule} from '@nebular/theme';
+import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
+
 
 @NgModule({
   // All components
@@ -31,10 +36,9 @@ import {NbButtonModule, NbStepperModule} from "@nebular/theme";
     PastorShowComponent,
     PastorCreateModalComponent,
     MatrimonioShowComponent,
-    IglesiaShowComponent,
-    IglesiaCreateModalComponent,
     ContrayenteCreateComponent,
     MatrimonioCreateComponent,
+    CongregacionShowComponent,
   ],
   imports: [
     CommonModule,
@@ -55,11 +59,18 @@ import {NbButtonModule, NbStepperModule} from "@nebular/theme";
     MatPaginatorModule,
     NbStepperModule,
     NbButtonModule,
+    NgxMatSelectSearchModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDividerModule,
+    NbCardModule,
+    MatGridListModule,
+    MatCardModule
   ],
   exports: [],
   entryComponents: [
     PastorCreateModalComponent,
-    IglesiaCreateModalComponent,
+    ContrayenteCreateComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

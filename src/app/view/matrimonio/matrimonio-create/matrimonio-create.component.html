@@ -1,40 +1,92 @@
 <h1>
   {{messages.title}}
 </h1>
-<nb-stepper linear>
-  <nb-step [label]="messages.cont1">
-    <h3>{{messages.contrayente}}</h3>
-    <form [formGroup]="contrayenteForm">
-      <app-contrayente-create></app-contrayente-create>
-    </form>
-    <button disabled nbButton nbStepperPrevious>{{messages.prevStep}}</button>
-    <button nbButton nbStepperNext>{{messages.nextStep}}</button>
-  </nb-step>
-  <nb-step [label]="messages.cont2">
-    <h3>{{messages.contrayente}}</h3>
-    <form [formGroup]="contrayenteForm">
-      <app-contrayente-create></app-contrayente-create>
-    </form>
-    <button nbButton nbStepperPrevious>{{messages.prevStep}}</button>
-    <button nbButton nbStepperNext>{{messages.nextStep}}</button>
-  </nb-step>
-  <nb-step [label]="messages.marriageData">
-    <h3>{{messages.marriageData}}</h3>
-    <form [formGroup]="marriageForm">
-      <mat-form-field>
-        <mat-select formControlName="church" id="church" placeholder="{{ messages.church }}" required>
+<form [formGroup]="marriageData">
+  <nb-stepper class="header" linear orientation="vertical">
 
-          <mat-option *ngFor="let church of churches" [value]=church>
-            {{ church.name }}
-          </mat-option>
-        </mat-select>
+    <nb-step [label]="messages.contrayente">
+      <h3>{{messages.contrayente}}</h3>
+      <app-contrayente-create></app-contrayente-create>
+      <button disabled nbButton nbStepperPrevious>{{messages.prevStep}}</button>
+      <button (click)="saveContrayentes(contrayenteCreatePointer)" [disabled]=isDisabled()
+              nbButton
+              nbStepperNext>{{messages.nextStep}}</button>
+    </nb-step>
 
-        <mat-error *ngIf="marriageForm.controls['church'].hasError('required')">
-          {{ messages.errors.requiredField }}
-        </mat-error>
-      </mat-form-field>
-    </form>
-    <button nbButton nbStepperPrevious>{{messages.prevStep}}</button>
-    <button nbButton status="success">{{messages.save}}</button>
-  </nb-step>
-</nb-stepper>
+    <nb-step [label]="messages.marriageData">
+      <h3>{{messages.marriageData}}</h3>
+      <nb-card [accent]=isValid()>
+        <nb-card-body>
+          <mat-form-field>
+            <mat-select (selectionChange)="getChurches($event.value)" formControlName="district" id="district"
+                        placeholder="{{ messages.district }}"
+                        required>
+
+              <mat-option *ngFor="let distrito of distritos" [value]=distrito.name>
+                {{ distrito.name }}
+              </mat-option>
+            </mat-select>
+
+            <mat-error *ngIf="marriageData.controls['church'].hasError('required')">
+              {{ messages.errors.requiredField }}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select formControlName="church" id="church" placeholder="{{ messages.church }}" required>
+
+              <mat-option *ngFor="let church of churches" [value]=church>
+                {{ church.name }}
+              </mat-option>
+            </mat-select>
+
+            <mat-error *ngIf="marriageData.controls['church'].hasError('required')">
+              {{ messages.errors.requiredField }}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select formControlName="pastor" id="pastor" placeholder="{{ messages.pastor }}" required>
+
+              <mat-option *ngFor="let pastor of pastors" [value]=pastor>
+                {{ pastor.names }} {{ pastor.lastNames }}
+              </mat-option>
+            </mat-select>
+
+            <mat-error *ngIf="marriageData.controls['church'].hasError('required')">
+              {{ messages.errors.requiredField }}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input [matDatepicker]="picker" formControlName="date"
+                   id="date" matInput placeholder="{{ messages.date }}">
+            <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="marriageData.controls['date'].hasError('required')">
+              {{ messages.errors.requiredField }}
+            </mat-error>
+          </mat-form-field>
+          <mat-divider></mat-divider>
+          <mat-form-field>
+            <input formControlName="regNumber" id="regNumber" matInput
+                   placeholder="{{ messages.regNumber }}" required>
+
+            <mat-error *ngIf="marriageData.controls['regNumber'].hasError('required')">
+              {{ messages.errors.requiredField }}
+            </mat-error><mat-error *ngIf="marriageData.controls['regNumber'].hasError('pattern')">
+            {{ messages.errors.invalidRegNumber }}
+          </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input formControlName="notaria" id="notaria" matInput
+                   placeholder="{{ messages.notaria }}" required>
+
+            <mat-error *ngIf="marriageData.controls['notaria'].hasError('required')">
+              {{ messages.errors.requiredField }}
+            </mat-error>
+          </mat-form-field>
+        </nb-card-body>
+      </nb-card>
+      <button nbButton nbStepperPrevious>{{messages.prevStep}}</button>
+      <button nbButton status="success" [disabled]="!this.marriageData.valid">{{messages.save}}</button>
+    </nb-step>
+  </nb-stepper>
+</form>

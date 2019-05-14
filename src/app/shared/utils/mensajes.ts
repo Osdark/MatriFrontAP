@@ -27,27 +27,17 @@ export const mensajes = {
     }
   },
   church: {
+    title: 'Listado de Iglesias',
+    distritoName: 'Distrito',
     name: 'Nombre',
-    address: 'Dirección',
-    show: {
-      title: 'Listado de Iglesias',
-      search: 'Buscar...',
-      addChurch: 'Agregar iglesia',
-      back: 'Volver',
-      noResults: 'No hay iglesias resgistradas',
-    },
-    create: {
-      title: 'Agregar Iglesia',
-      add: 'Agregar',
-      cancel: 'Cerrar',
-      errors: {
-        requiredField: 'Este campo es obligatorio',
-      },
-      successful: 'Igelsias agregada exitosamente',
-      unsuccessful: 'Hubo un problema al agregar por favor intente de nuevo',
-    }
+    type: 'Tipo',
+    search: 'Buscar...',
+    back: 'Volver',
+    noResults: 'No hay iglesias resgistradas',
   },
   contrayente: {
+    novio: 'Novio',
+    novia: 'Novia',
     names: 'Nombres',
     lastNames: 'Apellidos',
     documentNumber: 'Número de documento',
@@ -81,10 +71,11 @@ export const mensajes = {
     },
     create: {
       title: 'Registrar Matrimonio',
-      contrayente: 'Registrar Contrayente',
+      contrayente: 'Contrayentes',
       cont1: 'Primer Contrayente',
       cont2: 'Segundo Contrayente',
-      marriageData: 'Datos Matrimonio',
+      marriageData: 'Información',
+      district: 'Distrito',
       church: 'Iglesia',
       pastor: 'Pastor',
       date: 'Fecha',
@@ -95,6 +86,7 @@ export const mensajes = {
       save: 'Registrar',
       errors: {
         requiredField: 'Este campo es obligatorio',
+        invalidRegNumber: 'El Número de registro es incorrecto'
       }
     },
   },

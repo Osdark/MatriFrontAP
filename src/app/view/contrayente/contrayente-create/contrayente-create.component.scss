@@ -1,8 +1,13 @@
-.form {
-  text-align: center;
+.cards {
+  width: 40%;
+  display: inline-block;
+  margin: 1rem 1.5rem;
+  padding: .5rem;
 }
+
 .mat-form-field {
   display: inline-block;
   font-size: 14px;
-  width: 80%;
+  margin: 0 1.5rem;
+  width: 90%;
 }

@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {
+  CongregacionShowComponent,
   ContrayenteCreateComponent,
-  IglesiaShowComponent,
+  MatrimonioCreateComponent,
   MatrimonioShowComponent,
   PastorShowComponent,
-  MatrimonioCreateComponent,
 } from './shared/pages';
 import {AppComponent} from './app.component';
 
@@ -15,8 +15,8 @@ const routes: Routes = [
     component: PastorShowComponent
   },
   {
-    path: 'iglesias',
-    component: IglesiaShowComponent
+    path: 'congregaciones',
+    component: CongregacionShowComponent
   },
   {
     path: 'contrayente',

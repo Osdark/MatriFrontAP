@@ -3,9 +3,10 @@ import {MasterGateway} from '../../../domain/model/master/gateway/master-gateway
 import {environment} from '../../../../../environments/environment';
 import {Observable} from 'rxjs';
 import {DocumentType} from '../../../domain/model/master/documentType/entity/documentType.model';
-import {Iglesia} from '../../../domain/model/master/iglesia/entity/iglesia.model';
 import {Pastor} from '../../../domain/model/master/pastor/entity/pastor.model';
 import {HttpClient} from '@angular/common/http';
+import {Congregacion} from "../../../domain/model/master/congregacion/entity/congregacion.model";
+import {Distrito} from "../../../domain/model/master/congregacion/entity/distrito.model";
 
 @Injectable({
   providedIn: 'root'
@@ -24,11 +25,6 @@ export class MasterService extends MasterGateway {
     return this.http.get<DocumentType[]>(URL).pipe();
   }
 
-  getAllIglesias(): Observable<Iglesia[]> {
-    const URL = `${this.masterURL}/iglesias`;
-    return this.http.get<Iglesia[]>(URL).pipe();
-  }
-
   getAllPastores(): Observable<Pastor[]> {
     const URL = `${this.masterURL}/pastores`;
     return this.http.get<Pastor[]>(URL).pipe();
@@ -37,11 +33,6 @@ export class MasterService extends MasterGateway {
   getDocumentTypeByIdType(idType: string): Observable<DocumentType> {
     const URL = `${this.masterURL}/documento/${idType}`;
     return this.http.get<DocumentType>(URL).pipe();
-  }
-
-  getIglesiaByName(name: string): Observable<Iglesia> {
-    const URL = `${this.masterURL}/iglesia/${name}`;
-    return this.http.get<Iglesia>(URL).pipe();
   }
 
   getPastorByDocumentNumber(documentNumber: string): Observable<Pastor> {
@@ -54,8 +45,28 @@ export class MasterService extends MasterGateway {
     return this.http.post<Pastor>(URL, pastor).pipe();
   }
 
-  saveChurch(church: Iglesia) {
-    const URL = `${this.masterURL}/iglesia/nueva`;
-    return this.http.post<Iglesia>(URL, church).pipe();
+  getAllCongregaciones(): Observable<Congregacion[]> {
+    const URL = `${this.masterURL}/congregaciones`;
+    return this.http.get<Congregacion[]>(URL).pipe();
+  }
+
+  getCongregacionesByDistritoName(distritoName: string): Observable<Congregacion[]> {
+    const URL = `${this.masterURL}/congregaciones/distrito/${distritoName}`;
+    return this.http.get<Congregacion[]>(URL).pipe();
+  }
+
+  getCongregacionesByName(name: string): Observable<Congregacion[]> {
+    const URL = `${this.masterURL}/congregaciones/name/${name}`;
+    return this.http.get<Congregacion[]>(URL).pipe();
+  }
+
+  getCongregacionesByType(type: string): Observable<Congregacion[]> {
+    const URL = `${this.masterURL}/congregaciones/distrito/${type}`;
+    return this.http.get<Congregacion[]>(URL).pipe();
+  }
+
+  getAllDistritos(): Observable<Distrito[]> {
+    const URL = `${this.masterURL}/distritos`;
+    return this.http.get<Distrito[]>(URL).pipe();
   }
 }

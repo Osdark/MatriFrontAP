@@ -1,0 +1,31 @@
+<div>
+  <h2>{{ messages.title }}</h2>
+</div>
+
+<mat-form-field>
+  <input (keyup)="applyFilter($event.target.value)" matInput placeholder="{{ messages.search }}">
+</mat-form-field>
+
+<table [dataSource]="dataSource" class="mat-elevation-z8" mat-table matSort>
+
+  <ng-container matColumnDef="distritoName">
+    <th *matHeaderCellDef mat-header-cell mat-sort-header> {{ messages.distritoName }}</th>
+    <td *matCellDef="let element" mat-cell> {{element.distritoName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th *matHeaderCellDef mat-header-cell mat-sort-header> {{ messages.name }}</th>
+    <td *matCellDef="let element" mat-cell> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="type">
+    <th *matHeaderCellDef mat-header-cell mat-sort-header> {{ messages.type }}</th>
+    <td *matCellDef="let element" mat-cell> {{element.type}} </td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+  <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+<toaster-container></toaster-container>

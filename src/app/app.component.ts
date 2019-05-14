@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
         },
         {
           title: 'Iglesias',
-          link: '/iglesias',
+          link: '/congregaciones',
           icon: 'fa fa-institution'
         },
       ]

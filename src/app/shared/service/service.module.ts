@@ -6,6 +6,7 @@ import {MasterGateway} from '../../core/domain/model/master/gateway/master-gatew
 import {MasterService} from '../../core/infraestucture/services/master/master.service';
 import {NbMenuService, NbSidebarService} from '@nebular/theme';
 import {NbMenuInternalService} from '@nebular/theme/components/menu/menu.service';
+import {ContrayenteCreateComponent} from '../pages';
 
 @NgModule({
   imports: [CommonModule],

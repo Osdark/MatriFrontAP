@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IglesiaCreateModalComponent } from './iglesia-create-modal.component';
+import { CongregacionShowComponent } from './congregacion-show.component';
 
-describe('IglesiaCreateModalComponent', () => {
-  let component: IglesiaCreateModalComponent;
-  let fixture: ComponentFixture<IglesiaCreateModalComponent>;
+describe('CongregacionShowComponent', () => {
+  let component: CongregacionShowComponent;
+  let fixture: ComponentFixture<CongregacionShowComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IglesiaCreateModalComponent ]
+      declarations: [ CongregacionShowComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IglesiaCreateModalComponent);
+    fixture = TestBed.createComponent(CongregacionShowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
