@@ -1,19 +1,25 @@
 <h1>
   {{messages.title}}
 </h1>
-<form [formGroup]="marriageData">
-  <nb-stepper class="header" linear orientation="vertical">
-
-    <nb-step [label]="messages.contrayente">
+<nb-stepper #stepper class="header" linear orientation="vertical">
+  <nb-step [label]="messages.contrayente" [stepControl]="contrayentesFormData">
+    <form [formGroup]="contrayentesFormData">
       <h3>{{messages.contrayente}}</h3>
       <app-contrayente-create></app-contrayente-create>
       <button disabled nbButton nbStepperPrevious>{{messages.prevStep}}</button>
       <button (click)="saveContrayentes(contrayenteCreatePointer)" [disabled]=isDisabled()
               nbButton
               nbStepperNext>{{messages.nextStep}}</button>
-    </nb-step>
+      <input
+        *ngIf="isDisabled() ?
+        this.contrayentesFormData.controls.contrayenteCtrl.setValue(null) :
+        this.contrayentesFormData.controls.contrayenteCtrl.setValue('valid')"
+        formControlName="contrayenteCtrl">
+    </form>
+  </nb-step>
 
-    <nb-step [label]="messages.marriageData">
+  <nb-step [label]="messages.marriageData" [stepControl]="marriageData">
+    <form [formGroup]="marriageData">
       <h3>{{messages.marriageData}}</h3>
       <nb-card [accent]=isValid()>
         <nb-card-body>
@@ -71,9 +77,10 @@
 
             <mat-error *ngIf="marriageData.controls['regNumber'].hasError('required')">
               {{ messages.errors.requiredField }}
-            </mat-error><mat-error *ngIf="marriageData.controls['regNumber'].hasError('pattern')">
-            {{ messages.errors.invalidRegNumber }}
-          </mat-error>
+            </mat-error>
+            <mat-error *ngIf="marriageData.controls['regNumber'].hasError('pattern')">
+              {{ messages.errors.invalidRegNumber }}
+            </mat-error>
           </mat-form-field>
           <mat-form-field>
             <input formControlName="notaria" id="notaria" matInput
@@ -86,7 +93,8 @@
         </nb-card-body>
       </nb-card>
       <button nbButton nbStepperPrevious>{{messages.prevStep}}</button>
-      <button nbButton status="success" [disabled]="!this.marriageData.valid">{{messages.save}}</button>
-    </nb-step>
-  </nb-stepper>
-</form>
+      <button (click)=saveMarriage() [disabled]="!this.marriageData.valid" nbButton
+              status="success">{{messages.save}}</button>
+    </form>
+  </nb-step>
+</nb-stepper>

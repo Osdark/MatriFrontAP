@@ -17,7 +17,7 @@ import {
   MatInputModule, MatNativeDateModule,
   MatPaginatorModule,
   MatSelectModule,
-  MatSortModule,
+  MatSortModule, MatStepperModule,
   MatTableModule,
   MatTooltipModule
 } from '@angular/material';
@@ -65,7 +65,8 @@ import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
     MatDividerModule,
     NbCardModule,
     MatGridListModule,
-    MatCardModule
+    MatCardModule,
+    MatStepperModule
   ],
   exports: [],
   entryComponents: [

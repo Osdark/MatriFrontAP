@@ -1,5 +1,5 @@
 import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatrimonioUsecaseService} from '../../../core/domain/usecase/matrimonio/matrimonio-usecase.service';
 import {MasterUsecaseService} from '../../../core/domain/usecase/master/master-usecase.service';
 import {Pastor} from '../../../core/domain/model/master/pastor/entity/pastor.model';
@@ -26,6 +26,7 @@ export class MatrimonioCreateComponent implements OnInit {
   messages: any;
   public newMarriage: Matrimonio;
   @ViewChild(ContrayenteCreateComponent) contrayenteCreatePointer: ContrayenteCreateComponent;
+  contrayentesFormData: FormGroup;
   private contrayentes: Contrayente[] = [];
 
   constructor(
@@ -47,7 +48,30 @@ export class MatrimonioCreateComponent implements OnInit {
     this.getDistritos();
   }
 
+  isDisabled(): boolean {
+    const result = this.contrayenteCreatePointer.form.valid;
+    const result1 = this.contrayenteCreatePointer.form1.valid;
+    return !result || !result1;
+  }
+
+  isValid(): string {
+    let color = 'warning';
+    return this.marriageData.valid ? color = 'success' : color = 'warning';
+  }
+
+  private saveMarriage() {
+    this.newMarriage.iglesia = this.marriageData.controls.church.value;
+    this.newMarriage.pastor = this.marriageData.controls.pastor.value;
+    this.newMarriage.date = this.marriageData.controls.date.value;
+    this.newMarriage.marriageRegistrationNumber = this.marriageData.controls.regNumber.value;
+    this.newMarriage.notaria = this.marriageData.controls.notaria.value;
+    console.log(this.newMarriage);
+  }
+
   private createForms() {
+    this.contrayentesFormData = this.fb.group({
+      contrayenteCtrl: ['', Validators.compose([Validators.required])]
+    });
     this.marriageData = this.fb.group({
       district: [{value: ''}, Validators.compose([Validators.required])],
       church: [{value: ''}, Validators.compose([Validators.required])],
@@ -111,21 +135,11 @@ export class MatrimonioCreateComponent implements OnInit {
       pointer.form1.controls.documentType.value, pointer.form1.controls.documentNumber.value,
       pointer.form1.controls.civilRegNumber.value, pointer.form1.controls.notaria.value
     );
+
     console.log(novia);
     console.log(novio);
     this.newMarriage.contrayentes.push(novia);
     this.newMarriage.contrayentes.push(novio);
     console.log(this.newMarriage);
-  }
-
-  isDisabled(): boolean {
-    const result = this.contrayenteCreatePointer.form.valid;
-    const result1 = this.contrayenteCreatePointer.form1.valid;
-    return !result || !result1;
-  }
-
-  isValid(): string {
-    let color = 'warning';
-    return this.marriageData.valid ? color = 'success' : color = 'warning';
   }
 }

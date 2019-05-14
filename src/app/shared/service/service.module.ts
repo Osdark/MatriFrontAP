@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {forwardRef, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ContrayenteGateway} from '../../core/domain/model/contrayente/gateway/contrayente-gateway.abstract';
 import {ContrayenteService} from '../../core/infraestucture/services/contrayente/contrayente.service';
@@ -6,7 +6,6 @@ import {MasterGateway} from '../../core/domain/model/master/gateway/master-gatew
 import {MasterService} from '../../core/infraestucture/services/master/master.service';
 import {NbMenuService, NbSidebarService} from '@nebular/theme';
 import {NbMenuInternalService} from '@nebular/theme/components/menu/menu.service';
-import {ContrayenteCreateComponent} from '../pages';
 
 @NgModule({
   imports: [CommonModule],
