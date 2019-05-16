@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
       icon: 'fa fa-book',
       children: [
         {
-          title: `Ver`,
+          title: `Ver ${this.auth.isAuthenticated()}`,
           link: '/matrimonios'
         },
         {

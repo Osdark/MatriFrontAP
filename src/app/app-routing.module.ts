@@ -9,6 +9,7 @@ import {
   PastorShowComponent,
 } from './shared/pages';
 import {AppComponent} from './app.component';
+import {AuthGuard} from "./auth/auth.guard";
 
 const routes: Routes = [
   {
@@ -33,7 +34,10 @@ const routes: Routes = [
   },
   {
     path: 'matrimonio/nuevo',
-    component: MatrimonioCreateComponent
+    component: MatrimonioCreateComponent,
+    canActivate: [
+      AuthGuard
+    ]
   },
   {
     path: 'home',
@@ -43,6 +47,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+  providers: [AuthGuard],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

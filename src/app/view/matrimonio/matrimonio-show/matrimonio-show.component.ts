@@ -5,6 +5,7 @@ import {Matrimonio} from '../../../core/domain/model/matrimonio/entity/matrimoni
 import {MatrimonioUsecaseService} from '../../../core/domain/usecase/matrimonio/matrimonio-usecase.service';
 import {MasterUsecaseService} from '../../../core/domain/usecase/master/master-usecase.service';
 import {ToasterService} from 'angular2-toaster';
+import {AuthService} from "../../../auth/auth.service";
 
 @Component({
   selector: 'app-matrimonio-show',
@@ -22,7 +23,8 @@ export class MatrimonioShowComponent {
   constructor(
     private matrimonioUSeCase: MatrimonioUsecaseService,
     private masterUseCase: MasterUsecaseService,
-    private toastr: ToasterService
+    private toastr: ToasterService,
+    private auth: AuthService,
   ) {
     this.getAllMarriages();
     this.messages = mensajes.matrimonio.show;
