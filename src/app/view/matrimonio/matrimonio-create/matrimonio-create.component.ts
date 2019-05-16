@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatrimonioUsecaseService} from '../../../core/domain/usecase/matrimonio/matrimonio-usecase.service';
 import {MasterUsecaseService} from '../../../core/domain/usecase/master/master-usecase.service';
@@ -11,6 +11,7 @@ import {Congregacion} from '../../../core/domain/model/master/congregacion/entit
 import {Distrito} from '../../../core/domain/model/master/congregacion/entity/distrito.model';
 import {ContrayenteUsecaseService} from '../../../core/domain/usecase/contrayente/contrayente-usecase.service';
 import {ContrayenteCreateComponent} from '../../contrayente/contrayente-create/contrayente-create.component';
+import {AuthService} from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-matrimonio-create',
@@ -31,11 +32,11 @@ export class MatrimonioCreateComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private cdRef: ChangeDetectorRef,
     private matrimonioUseCase: MatrimonioUsecaseService,
     private contrayenteUseCase: ContrayenteUsecaseService,
     private masterUseCase: MasterUsecaseService,
     public toastr: ToasterService,
+    private auth: AuthService,
   ) {
     this.messages = mensajes.matrimonio.create;
     this.createForms();
@@ -43,7 +44,6 @@ export class MatrimonioCreateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cdRef.detectChanges();
     this.getPastors();
     this.getDistritos();
   }
@@ -65,7 +65,19 @@ export class MatrimonioCreateComponent implements OnInit {
     this.newMarriage.date = this.marriageData.controls.date.value;
     this.newMarriage.marriageRegistrationNumber = this.marriageData.controls.regNumber.value;
     this.newMarriage.notaria = this.marriageData.controls.notaria.value;
+    this.newMarriage.actaNumber = this.marriageData.controls.actaNumber.value;
     console.log(this.newMarriage);
+    this.matrimonioUseCase.saveMatrimonio(this.newMarriage).subscribe(
+      regMarriage => {
+        console.log(regMarriage);
+        this.showMessage('success', 'Registro Correcto', `Registro de matrimonio ${this.newMarriage.actaNumber}`);
+      },
+      err => {
+        console.log(err);
+        this.showMessage('error', 'Registro Fallido', 'No se pudo registrar el matrimonio');
+      }
+    );
+    setTimeout(() => location.assign('/matrimonios'), 3000);
   }
 
   private createForms() {
@@ -81,6 +93,7 @@ export class MatrimonioCreateComponent implements OnInit {
         Validators.required,
         Validators.pattern('[0-9]+')
       ])],
+      actaNumber: ['', Validators.compose([Validators.required])],
       notaria: ['', Validators.compose([Validators.required])],
     });
   }

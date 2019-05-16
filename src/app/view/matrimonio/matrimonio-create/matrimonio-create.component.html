@@ -83,6 +83,14 @@
             </mat-error>
           </mat-form-field>
           <mat-form-field>
+            <input formControlName="actaNumber" id="actaNumber" matInput
+                   placeholder="{{ messages.actaNumber }}" required>
+
+            <mat-error *ngIf="marriageData.controls['actaNumber'].hasError('required')">
+              {{ messages.errors.requiredField }}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
             <input formControlName="notaria" id="notaria" matInput
                    placeholder="{{ messages.notaria }}" required>
 

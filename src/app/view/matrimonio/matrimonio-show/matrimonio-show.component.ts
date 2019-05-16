@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {mensajes} from '../../../shared/utils/mensajes';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {Matrimonio} from '../../../core/domain/model/matrimonio/entity/matrimonio.model';
@@ -13,7 +13,8 @@ import {ToasterService} from 'angular2-toaster';
 })
 export class MatrimonioShowComponent {
   messages: any;
-  displayedColumns: string[] = ['contrayente1', 'contrayente2', 'church', 'pastor', 'date', 'marriageRegistrationNumber', 'notaria'];
+  displayedColumns: string[] =
+    ['actaNumber', 'contrayente1', 'contrayente2', 'church', 'pastor', 'date', 'marriageRegistrationNumber', 'notaria'];
   dataSource: MatTableDataSource<Matrimonio>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;

@@ -6,6 +6,7 @@ import {MasterGateway} from '../../core/domain/model/master/gateway/master-gatew
 import {MasterService} from '../../core/infraestucture/services/master/master.service';
 import {NbMenuService, NbSidebarService} from '@nebular/theme';
 import {NbMenuInternalService} from '@nebular/theme/components/menu/menu.service';
+import {AuthService} from "../../auth/auth.service";
 
 @NgModule({
   imports: [CommonModule],
@@ -21,6 +22,7 @@ import {NbMenuInternalService} from '@nebular/theme/components/menu/menu.service
     NbSidebarService,
     NbMenuInternalService,
     NbMenuService,
+    AuthService,
     // Matrimonio Service
   ]
 })

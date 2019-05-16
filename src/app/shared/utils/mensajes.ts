@@ -67,6 +67,7 @@ export const mensajes = {
       date: 'Fecha',
       regNumber: 'Número de registro',
       notaria: 'Notaría/Registraduría',
+      actaNumber: 'Número de acta',
       search: 'Buscar...',
     },
     create: {
@@ -78,6 +79,7 @@ export const mensajes = {
       district: 'Distrito',
       church: 'Iglesia',
       pastor: 'Pastor',
+      actaNumber: 'Número de acta',
       date: 'Fecha',
       regNumber: 'Número de registro',
       notaria: 'Notaría/Registraduría',

@@ -6,3 +6,4 @@ export {MatrimonioShowComponent} from '../view/matrimonio/matrimonio-show/matrim
 export {ContrayenteCreateComponent} from '../view/contrayente/contrayente-create/contrayente-create.component';
 export {MatrimonioCreateComponent} from '../view/matrimonio/matrimonio-create/matrimonio-create.component';
 export {CongregacionShowComponent} from '../view/masters/congregacion/congregacion-show/congregacion-show.component';
+export {CallbackComponent} from '../callback/callback.component';

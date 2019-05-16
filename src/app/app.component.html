@@ -2,12 +2,24 @@
 
   <nb-layout-header subheader>
     <div class="logo-container">
-      <a (click)="toggle()" href="#" class="navigation">
+      <a (click)="toggle()" class="navigation" href="#">
         <fa name="bars"></fa>
       </a>
       <div class="logo">SGM -
         <span> Sistema de Gestión de Matrimonios </span>
       </div>
+    </div>
+    <div class="actions">
+      <nb-actions>
+        <nb-action (click)="auth.login()" *ngIf="!auth.isAuthenticated()" icon="fa fa-sign-in"
+                   matTooltip="Iniciar Sesión"></nb-action>
+        <nb-action (click)="auth.logout()" *ngIf="auth.isAuthenticated()" icon="fa fa-sign-out"
+                   matTooltip="Cerrar Sesión"></nb-action>
+        <nb-action *ngIf="auth.isAuthenticated()">
+          <nb-user name="{{auth.userProfile.name}}" title="Pastor" picture="{{auth.userProfile.picture}}">
+          </nb-user>
+        </nb-action>
+      </nb-actions>
     </div>
   </nb-layout-header>
 
@@ -20,9 +32,5 @@
     <toaster-container></toaster-container>
     <router-outlet></router-outlet>
   </nb-layout-column>
-
-  <nb-layout-footer fixed>
-    <!-- Insert footer here -->
-  </nb-layout-footer>
 
 </nb-layout>

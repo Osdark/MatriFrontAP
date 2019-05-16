@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {NbMenuItem, NbSidebarService} from "@nebular/theme";
+import {NbMenuItem, NbSidebarService} from '@nebular/theme';
+import {AuthService} from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,6 @@ import {NbMenuItem, NbSidebarService} from "@nebular/theme";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'MatriFront';
   items: NbMenuItem[] = [
     {
       title: 'Inicio',
@@ -21,12 +21,12 @@ export class AppComponent implements OnInit {
       icon: 'fa fa-book',
       children: [
         {
-          title: 'Ver',
+          title: `Ver`,
           link: '/matrimonios'
         },
         {
-          title: 'Registrar',
-          link: '/matrimonio/nuevo'
+          title: `Registrar`,
+          link: '/matrimonio/nuevo',
         }
       ]
     },
@@ -51,6 +51,7 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private sidebarService: NbSidebarService,
+    private auth: AuthService,
   ) {
   }
 

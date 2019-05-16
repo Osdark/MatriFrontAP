@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {
+  CallbackComponent,
   CongregacionShowComponent,
   ContrayenteCreateComponent,
   MatrimonioCreateComponent,
@@ -10,6 +11,10 @@ import {
 import {AppComponent} from './app.component';
 
 const routes: Routes = [
+  {
+    path: 'callback',
+    component: CallbackComponent
+  },
   {
     path: 'pastores',
     component: PastorShowComponent

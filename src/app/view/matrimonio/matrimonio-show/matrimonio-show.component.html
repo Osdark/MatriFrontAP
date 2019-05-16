@@ -8,6 +8,11 @@
 
 <table [dataSource]="dataSource" class="mat-elevation-z8" mat-table matSort>
 
+  <ng-container matColumnDef="actaNumber">
+    <th *matHeaderCellDef mat-header-cell mat-sort-header> {{messages.actaNumber}} </th>
+    <td *matCellDef="let element" mat-cell> {{element.actaNumber}} </td>
+  </ng-container>
+
   <ng-container matColumnDef="contrayente1">
     <th *matHeaderCellDef mat-header-cell mat-sort-header> {{messages.contrayente}} 1</th>
     <td *matCellDef="let element" mat-cell> {{element.contrayentes[0].names}} {{element.contrayentes[0].lastNames}} </td>
@@ -30,7 +35,7 @@
 
   <ng-container matColumnDef="date">
     <th *matHeaderCellDef mat-header-cell mat-sort-header> {{ messages.date }}</th>
-    <td *matCellDef="let element" mat-cell> {{element.fecha|date:'dd-MM-yyyy'}} </td>
+    <td *matCellDef="let element" mat-cell> {{element.date|date:'dd-MM-yyyy'}} </td>
   </ng-container>
 
   <ng-container matColumnDef="marriageRegistrationNumber">

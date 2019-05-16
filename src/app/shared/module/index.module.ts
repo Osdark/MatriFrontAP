@@ -6,7 +6,8 @@ import {
   MatrimonioCreateComponent,
   MatrimonioShowComponent,
   PastorCreateModalComponent,
-  PastorShowComponent
+  PastorShowComponent,
+  CallbackComponent,
 } from '../pages';
 import {
   MatCardModule,
@@ -39,6 +40,7 @@ import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
     ContrayenteCreateComponent,
     MatrimonioCreateComponent,
     CongregacionShowComponent,
+    CallbackComponent,
   ],
   imports: [
     CommonModule,
