@@ -24,7 +24,7 @@ export class MatrimonioShowComponent {
     private matrimonioUSeCase: MatrimonioUsecaseService,
     private masterUseCase: MasterUsecaseService,
     private toastr: ToasterService,
-    private auth: AuthService,
+    public auth: AuthService,
   ) {
     this.getAllMarriages();
     this.messages = mensajes.matrimonio.show;

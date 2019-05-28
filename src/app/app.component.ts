@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private sidebarService: NbSidebarService,
-    private auth: AuthService,
+    public auth: AuthService,
   ) {
   }
 

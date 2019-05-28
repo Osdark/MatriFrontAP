@@ -9,9 +9,7 @@ import {Contrayente} from '../../../core/domain/model/contrayente/entity/contray
 import {mensajes} from '../../../shared/utils/mensajes';
 import {Congregacion} from '../../../core/domain/model/master/congregacion/entity/congregacion.model';
 import {Distrito} from '../../../core/domain/model/master/congregacion/entity/distrito.model';
-import {ContrayenteUsecaseService} from '../../../core/domain/usecase/contrayente/contrayente-usecase.service';
 import {ContrayenteCreateComponent} from '../../contrayente/contrayente-create/contrayente-create.component';
-import {AuthService} from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-matrimonio-create',
@@ -32,11 +30,9 @@ export class MatrimonioCreateComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private matrimonioUseCase: MatrimonioUsecaseService,
-    private contrayenteUseCase: ContrayenteUsecaseService,
-    private masterUseCase: MasterUsecaseService,
+    public matrimonioUseCase: MatrimonioUsecaseService,
+    public masterUseCase: MasterUsecaseService,
     public toastr: ToasterService,
-    private auth: AuthService,
   ) {
     this.messages = mensajes.matrimonio.create;
     this.createForms();
@@ -59,7 +55,7 @@ export class MatrimonioCreateComponent implements OnInit {
     return this.marriageData.valid ? color = 'success' : color = 'warning';
   }
 
-  private saveMarriage() {
+  public saveMarriage() {
     this.newMarriage.iglesia = this.marriageData.controls.church.value;
     this.newMarriage.pastor = this.marriageData.controls.pastor.value;
     this.newMarriage.date = this.marriageData.controls.date.value;
@@ -80,6 +76,33 @@ export class MatrimonioCreateComponent implements OnInit {
     setTimeout(() => location.assign('/matrimonios'), 3000);
   }
 
+  public getChurches(districtName) {
+    this.masterUseCase.getCongregacionesByDistritoName(districtName).subscribe(
+      church => {
+        this.churches = church;
+      });
+  }
+
+  public saveContrayentes(pointer) {
+    console.log(pointer);
+    const novia = new Contrayente(
+      pointer.form.controls.names.value, pointer.form.controls.lastNames.value,
+      pointer.form.controls.documentType.value, pointer.form.controls.documentNumber.value,
+      pointer.form.controls.civilRegNumber.value, pointer.form.controls.notaria.value
+    );
+    const novio = new Contrayente(
+      pointer.form1.controls.names.value, pointer.form1.controls.lastNames.value,
+      pointer.form1.controls.documentType.value, pointer.form1.controls.documentNumber.value,
+      pointer.form1.controls.civilRegNumber.value, pointer.form1.controls.notaria.value
+    );
+
+    console.log(novia);
+    console.log(novio);
+    this.newMarriage.contrayentes.push(novia);
+    this.newMarriage.contrayentes.push(novio);
+    console.log(this.newMarriage);
+  }
+
   private createForms() {
     this.contrayentesFormData = this.fb.group({
       contrayenteCtrl: ['', Validators.compose([Validators.required])]
@@ -96,13 +119,6 @@ export class MatrimonioCreateComponent implements OnInit {
       actaNumber: ['', Validators.compose([Validators.required])],
       notaria: ['', Validators.compose([Validators.required])],
     });
-  }
-
-  private getChurches(districtName) {
-    this.masterUseCase.getCongregacionesByDistritoName(districtName).subscribe(
-      church => {
-        this.churches = church;
-      });
   }
 
   private getPastors() {
@@ -134,25 +150,5 @@ export class MatrimonioCreateComponent implements OnInit {
 
   private showMessage(type: string, title: string, body: string) {
     this.toastr.pop(type, title, body);
-  }
-
-  private saveContrayentes(pointer) {
-    console.log(pointer);
-    const novia = new Contrayente(
-      pointer.form.controls.names.value, pointer.form.controls.lastNames.value,
-      pointer.form.controls.documentType.value, pointer.form.controls.documentNumber.value,
-      pointer.form.controls.civilRegNumber.value, pointer.form.controls.notaria.value
-    );
-    const novio = new Contrayente(
-      pointer.form1.controls.names.value, pointer.form1.controls.lastNames.value,
-      pointer.form1.controls.documentType.value, pointer.form1.controls.documentNumber.value,
-      pointer.form1.controls.civilRegNumber.value, pointer.form1.controls.notaria.value
-    );
-
-    console.log(novia);
-    console.log(novio);
-    this.newMarriage.contrayentes.push(novia);
-    this.newMarriage.contrayentes.push(novio);
-    console.log(this.newMarriage);
   }
 }
